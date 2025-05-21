@@ -1,0 +1,45 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internet Banking - Meter Update OTP</title>
+  <link rel="stylesheet" href="/css/otp.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <div class="card">
+      <!-- Header Icon -->
+      <div class="card-header">
+        <img src="assets/meter_update.png" alt="Meter Icon" class="card-icon" />
+      </div>
+
+      <!-- Meter Update Title -->
+      <div class="title-container">
+        <span class="card-title">METER UPDATE</span>
+      </div>
+
+      <!-- OTP Timer -->
+      <div class="timer-container">
+        <span class="timer-text">Time Remaining: <strong>27s</strong></span>
+      </div>
+
+      <!-- OTP Input -->
+      <form class="card-body" action="#" method="POST">
+        <div class="otp-input-container">
+          <input
+            type="text"
+            id="otp"
+            name="otp"
+            placeholder="Enter OTP"
+            maxlength="6"
+            required
+          />
+        </div>
+        <button type="submit" class="btn-next">Verify</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

